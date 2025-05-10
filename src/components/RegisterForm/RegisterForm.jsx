@@ -2,19 +2,38 @@ import { Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerThunk } from "../../redux/auth/operations";
+import * as Yup from "yup";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+
   const initialValues = {
     name: "",
     email: "",
     password: "",
   };
+
   const handleSubmit = async (values, actions) => {
     console.log(values);
     dispatch(registerThunk(values));
     actions.resetForm();
   };
+
+  const registerValidationSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, "Name is too short")
+      .max(30, "Name is too long")
+      .required("Name is required"),
+
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+
   return (
     <div>
       <div>
@@ -27,7 +46,11 @@ const RegisterForm = () => {
         </div>
         <div>
           <div>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={registerValidationSchema}
+            >
               <Form>
                 <fieldset>
                   <label>Name</label>
@@ -45,8 +68,6 @@ const RegisterForm = () => {
                 </fieldset>
               </Form>
             </Formik>
-            <div></div>
-            <Link to="/">Back to Home</Link>
           </div>
         </div>
       </div>

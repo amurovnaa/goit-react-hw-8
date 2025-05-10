@@ -13,6 +13,7 @@ import { Suspense, useEffect } from "react";
 import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { refreshThunk } from "./redux/auth/operations";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <>
+      <Toaster position="top-center" />
       {isRefreshing && <Loader />}
       <SharedLayout />
       <div className={css.app}>

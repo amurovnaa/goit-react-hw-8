@@ -3,7 +3,7 @@ import { useId } from "react";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
 
 const ContactForm = () => {
   const initialValues = { name: "", number: "" };
@@ -27,11 +27,12 @@ const ContactForm = () => {
     name: Yup.string()
       .min(3, "At least 3 characters!")
       .max(50, "Max 50 charaters!")
-      .required("Required"),
+      .required("Name is required"),
     number: Yup.string()
       .min(3, "At least 3 numbers!")
       .max(50, "Max 50 charaters!")
-      .required("Required"),
+      .required("Phone number is required")
+      .matches(/^\+380\d{9}$/, "Phone must be in format +380XXXXXXXXX"),
   });
   return (
     <Formik
@@ -62,7 +63,7 @@ const ContactForm = () => {
             type="phone"
             name="number"
             id={phoneId}
-            placeholder="Enter phone"
+            placeholder="+380"
           />
           <ErrorMessage className={s.error} name="number" component="span" />
         </div>

@@ -6,7 +6,7 @@ import {
   selectError,
   selectFilteredContacts,
   selectLoading,
-} from "../../redux/contacts/contactsSlice";
+} from "../../redux/contacts/selectors";
 
 const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
@@ -14,17 +14,17 @@ const ContactList = () => {
   const error = useSelector(selectError);
   return (
     <>
-      {isLoading && !error ? (
-        <Loader />
-      ) : (
-        <ul className={s.contactList}>
-          {filteredContacts.map((contact) => (
-            <li key={contact.id} className={s.contactItem}>
-              <Contact contact={contact} />
-            </li>
-          ))}
-        </ul>
+      {isLoading && !error && <Loader />}
+      {!filteredContacts && (
+        <p>Your PhoneBook is empty. Add your first contact!</p>
       )}
+      <ul className={s.contactList}>
+        {filteredContacts.map((contact) => (
+          <li key={contact.id} className={s.contactItem}>
+            <Contact contact={contact} />
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
