@@ -1,7 +1,8 @@
+import React from "react";
 import Modal from "react-modal";
-// import css"./DeleteModal.css";
+import s from "./ModalDeleteContact.module.css"; // Importing the module CSS
 
-Modal.setAppElement("#root"); // Make sure this matches your app's root div
+Modal.setAppElement("#root"); // Ensure your app root element is set
 
 const ModalDeleteContact = ({ isOpen, onClose, onConfirm, contactName }) => {
   return (
@@ -9,18 +10,18 @@ const ModalDeleteContact = ({ isOpen, onClose, onConfirm, contactName }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Confirm Delete"
-      className="modal"
-      overlayClassName="overlay"
+      className={s.modal}
+      overlayClassName={s.overlay}
     >
-      <h2>Delete Contact</h2>
-      <p>
+      <h2 className={s.title}>Delete Contact</h2>
+      <p className={s.text}>
         Are you sure you want to delete <strong>{contactName}</strong>?
       </p>
-      <div className="buttons">
-        <button onClick={onConfirm} className="confirm">
+      <div className={s.buttons}>
+        <button onClick={onConfirm} className={s.confirm}>
           Yes, Delete
         </button>
-        <button onClick={onClose} className="cancel">
+        <button onClick={onClose} className={s.cancel}>
           Cancel
         </button>
       </div>

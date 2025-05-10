@@ -1,0 +1,71 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  color: #b46161;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.confirm {
+  background-color: #e48a8a;
+  color: white;
+}
+
+.confirm:hover {
+  background-color: #b85e5e;
+  transform: scale(1.05);
+}
+
+.cancel {
+  background-color: #f4f7fb;
+  color: #b46161;
+  border: 1px solid #b46161;
+}
+
+.cancel:hover {
+  background-color: #e0e7f1;
+  transform: scale(1.05);
+}

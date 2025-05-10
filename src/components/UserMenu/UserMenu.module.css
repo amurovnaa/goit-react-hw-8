@@ -1,0 +1,22 @@
+.userMenu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.username {
+  color: black;
+}
+.button {
+  padding: 8px 24px;
+  background-color: #d36f6f;
+  color: white;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #b46161;
+}

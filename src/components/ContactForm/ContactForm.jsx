@@ -35,43 +35,45 @@ const ContactForm = () => {
       .matches(/^\+380\d{9}$/, "Phone must be in format +380XXXXXXXXX"),
   });
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={ContactFormSchema}
-    >
-      <Form className={s.formContainer}>
-        <div className={s.inputWrapper}>
-          <label className={s.inputName} htmlFor={nameId}>
-            Name
-          </label>
-          <Field
-            className={s.input}
-            type="name"
-            name="name"
-            id={nameId}
-            placeholder="Enter name"
-          />
-          <ErrorMessage className={s.error} name="name" component="span" />
-        </div>
-        <div className={s.inputWrapper}>
-          <label className={s.inputName} htmlFor={phoneId}>
-            Number
-          </label>
-          <Field
-            className={s.input}
-            type="phone"
-            name="number"
-            id={phoneId}
-            placeholder="+380"
-          />
-          <ErrorMessage className={s.error} name="number" component="span" />
-        </div>
-        <button className={s.button} type="submit">
-          Add Contact
-        </button>
-      </Form>
-    </Formik>
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={ContactFormSchema}
+      >
+        <Form className={s.formContainer}>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={nameId}>
+              Name
+            </label>
+            <Field
+              className={s.input}
+              type="name"
+              name="name"
+              id={nameId}
+              placeholder="Enter name"
+            />
+            <ErrorMessage className={s.error} name="name" component="span" />
+          </div>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={phoneId}>
+              Phone number
+            </label>
+            <Field
+              className={s.input}
+              type="phone"
+              name="number"
+              id={phoneId}
+              placeholder="+380"
+            />
+            <ErrorMessage className={s.error} name="number" component="span" />
+          </div>
+          <button className={s.button} type="submit">
+            Add a contact
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 

@@ -14,7 +14,7 @@ export const SearchBox = ({ value, onChange }) => {
   return (
     <div className={s.searchBox}>
       <label htmlFor={searchId} className={s.paragraph}>
-        Find contacts by name
+        Find contacts by Name or Phone number:
       </label>
       <input
         className={s.input}

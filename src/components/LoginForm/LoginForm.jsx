@@ -1,8 +1,10 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginThunk } from "../../redux/auth/operations";
 import * as Yup from "yup";
+import s from "./LoginForm.module.css";
+import { useId } from "react";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -10,6 +12,8 @@ const LoginForm = () => {
     email: "",
     password: "",
   };
+  const emailId = useId();
+  const passwordId = useId();
 
   const handleSubmit = (values, actions) => {
     dispatch(loginThunk(values));
@@ -29,41 +33,49 @@ const LoginForm = () => {
 
   return (
     <div>
-      <div>
-        <div>
-          <h1>Login now!</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia sequi
-            exercira necessitatibus perspiciatis!
-          </p>
-        </div>
-        <div>
-          <div>
-            <Formik
-              initialValues={initialValues}
-              onSubmit={handleSubmit}
-              validationSchema={loginValidationSchema}
-            >
-              <Form>
-                <fieldset>
-                  <label>Email</label>
-                  <Field name="email" type="email" placeholder="Email" />
-                  <label>Password</label>
-                  <Field
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                  />
-                  <div>
-                    <Link to="/register">You don't have account? Sign UP!</Link>
-                  </div>
-                  <button type="submit">Login</button>
-                </fieldset>
-              </Form>
-            </Formik>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={loginValidationSchema}
+      >
+        <Form className={s.formContainer}>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={emailId}>
+              Email:
+            </label>
+            <Field
+              className={s.input}
+              name="email"
+              type="email"
+              placeholder="tima@gmail.com"
+            />
+
+            <ErrorMessage className={s.error} name="email" component="span" />
           </div>
-        </div>
-      </div>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={passwordId}>
+              Password:
+            </label>
+            <Field
+              className={s.input}
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+            <ErrorMessage
+              className={s.error}
+              name="password"
+              component="span"
+            />
+          </div>
+          <Link className={s.link} to="/register">
+            You don't have account? Sign Up!
+          </Link>
+          <button className={s.button} type="submit">
+            Login
+          </button>
+        </Form>
+      </Formik>
     </div>
   );
 };

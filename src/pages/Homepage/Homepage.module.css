@@ -1,0 +1,51 @@
+.container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 44px;
+  color: #b46161;
+}
+
+h2 {
+  font-size: 22px;
+  color: #b46161;
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 1rem;
+  color: black;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 26px;
+}
+
+.feature {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+}
+
+.featureTitle {
+  font-size: 1.2rem;
+  color: #b46161;
+  margin-bottom: 10px;
+}
+
+.featureText {
+  font-size: 1rem;
+  color: #666;
+}

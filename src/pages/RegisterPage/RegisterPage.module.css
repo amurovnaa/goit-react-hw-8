@@ -1,0 +1,15 @@
+.sectionWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  margin: 55px auto;
+}
+.registerText {
+  max-width: 280px;
+}
+.title {
+  font-size: 32px;
+  color: #b46161;
+}

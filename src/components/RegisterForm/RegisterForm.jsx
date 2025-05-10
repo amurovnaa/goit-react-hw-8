@@ -1,8 +1,10 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerThunk } from "../../redux/auth/operations";
 import * as Yup from "yup";
+import { useId } from "react";
+import s from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -12,6 +14,9 @@ const RegisterForm = () => {
     email: "",
     password: "",
   };
+  const nameId = useId();
+  const emailId = useId();
+  const passwordId = useId();
 
   const handleSubmit = async (values, actions) => {
     console.log(values);
@@ -35,43 +40,62 @@ const RegisterForm = () => {
   });
 
   return (
-    <div>
-      <div>
-        <div>
-          <h1>Register now!</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia sequi
-            exercira necessitatibus perspiciatis!
-          </p>
-        </div>
-        <div>
-          <div>
-            <Formik
-              initialValues={initialValues}
-              onSubmit={handleSubmit}
-              validationSchema={registerValidationSchema}
-            >
-              <Form>
-                <fieldset>
-                  <label>Name</label>
-                  <Field name="name" type="name" placeholder="Name" />
-                  <label>Email</label>
-                  <Field name="email" type="email" placeholder="Email" />
-                  <label>Password</label>
-                  <Field
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                  />
-                  <Link to="/login">You already have account?Sign in!</Link>
-                  <button type="submit">Register</button>
-                </fieldset>
-              </Form>
-            </Formik>
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={registerValidationSchema}
+      >
+        <Form className={s.formContainer}>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={nameId}>
+              Your name:
+            </label>
+            <Field
+              className={s.input}
+              name="name"
+              type="name"
+              placeholder="Name"
+            />
+            <ErrorMessage className={s.error} name="name" component="span" />
           </div>
-        </div>
-      </div>
-    </div>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={emailId}>
+              Email:
+            </label>
+            <Field
+              className={s.input}
+              name="email"
+              type="email"
+              placeholder="tima@gmail.com"
+            />
+            <ErrorMessage className={s.error} name="email" component="span" />
+          </div>
+          <div className={s.inputWrapper}>
+            <label className={s.inputName} htmlFor={passwordId}>
+              Password:
+            </label>
+            <Field
+              className={s.input}
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+            <ErrorMessage
+              className={s.error}
+              name="password"
+              component="span"
+            />
+          </div>
+          <Link className={s.link} to="/login">
+            You already have account? Sign in!
+          </Link>
+          <button className={s.button} type="submit">
+            Register
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 export default RegisterForm;

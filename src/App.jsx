@@ -1,19 +1,20 @@
 import css from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
-import ContactsPage from "./pages/Contacts/ContactsPage";
-import Homepage from "./pages/Homepage/Homepage";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
-import LoginPage from "./pages/Login/LoginPage";
-import RegisterPage from "./pages/Register/RegisterPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import Loader from "./components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/auth/selectors";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, lazy } from "react";
 import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { refreshThunk } from "./redux/auth/operations";
 import { Toaster } from "react-hot-toast";
+
+const HomePage = lazy(() => import("./pages/Homepage/Homepage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const App = () => {
       <div className={css.app}>
         <Suspense fallback={Loader}>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<HomePage />} />
             <Route
               path="/register"
               element={

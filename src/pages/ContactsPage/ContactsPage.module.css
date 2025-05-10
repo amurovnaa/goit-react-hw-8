@@ -1,0 +1,14 @@
+.section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 60px;
+  gap: 60px;
+}
+.title {
+  color: #b46161;
+  font-size: 36px;
+}
+.text {
+  margin-bottom: 24px;
+}
