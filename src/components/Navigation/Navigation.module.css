@@ -1,6 +1,6 @@
 .navMenu {
   display: flex;
-  gap: 30px;
+  gap: 8px;
 }
 
 .navLink {
@@ -13,4 +13,9 @@
 
 .navLink:hover {
   color: #d36f6f;
+}
+@media screen and (min-width: 769px) {
+  .navMenu {
+    gap: 30px;
+  }
 }

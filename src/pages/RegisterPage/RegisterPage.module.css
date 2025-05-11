@@ -1,10 +1,11 @@
 .sectionWrapper {
   display: flex;
-  flex-direction: row;
-  gap: 60px;
+  flex-direction: column;
+  gap: 26px;
   align-items: center;
   justify-content: center;
-  margin: 55px auto;
+  margin: 16px auto;
+  padding: 0 16px;
 }
 .registerText {
   max-width: 280px;
@@ -12,4 +13,12 @@
 .title {
   font-size: 32px;
   color: #b46161;
+}
+
+@media screen and (min-width: 768px) {
+  .sectionWrapper {
+    flex-direction: row;
+    margin: 55px auto;
+    padding: 0 55px;
+  }
 }

@@ -1,22 +1,31 @@
 .userMenu {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   align-items: center;
 }
 .username {
   color: black;
 }
 .button {
-  padding: 8px 24px;
+  padding: 6px 12px;
   background-color: #d36f6f;
   color: white;
   border-radius: 16px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
   background-color: #b46161;
+}
+@media screen and (min-width: 769px) {
+  .userMenu {
+    gap: 16px;
+  }
+  .button {
+    padding: 8px 24px;
+    font-size: 16px;
+  }
 }

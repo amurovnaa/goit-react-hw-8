@@ -1,9 +1,9 @@
 .section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  margin: 60px;
-  gap: 60px;
+  margin: 36px;
+  gap: 36px;
 }
 .title {
   color: #b46161;
@@ -11,4 +11,15 @@
 }
 .text {
   margin-bottom: 24px;
+}
+/* .searchList {
+  padding: 0 16px;
+} */
+@media screen and (min-width: 1025px) {
+  .section {
+    flex-direction: row;
+  }
+  /* .searchList {
+    padding: 0 16px;
+  } */
 }

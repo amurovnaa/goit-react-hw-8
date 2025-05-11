@@ -1,14 +1,25 @@
 .contactList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   max-width: 1024px;
 }
 
 .contactItem {
-  min-width: 300px;
+  max-width: 300px;
   border: 2px solid #d36f6fcc;
   padding: 14px;
   border-radius: 16px;
   background-color: #fff;
+}
+@media screen and (min-width: 1025px) {
+  .contactList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 1024px;
+  }
+  .contactItem {
+    min-width: 300px;
+  }
 }

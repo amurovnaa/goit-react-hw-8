@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  align-items: flex-start;
+  align-items: center;
 }
 .input {
-  width: 320px;
+  width: 290px;
   height: 24px;
   border: 2px solid #d36f6fcc;
   padding: 8px 16px;
@@ -15,4 +15,13 @@
 .input:focus {
   border-color: #985858;
   outline: none;
+}
+
+@media screen and (min-width: 769px) {
+  .searchBox {
+    align-items: flex-start;
+  }
+  .input {
+    width: 320px;
+  }
 }

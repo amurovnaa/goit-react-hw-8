@@ -1,12 +1,12 @@
 .container {
   max-width: 1200px;
-  margin: 60px auto;
-  padding: 40px;
+  margin: 32px auto;
+  padding: 0 16px;
   text-align: center;
 }
 
 h1 {
-  font-size: 44px;
+  font-size: 36px;
   color: #b46161;
 }
 
@@ -48,4 +48,14 @@ h2 {
 .featureText {
   font-size: 1rem;
   color: #666;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 60px auto;
+    padding: 40px;
+  }
+  h1 {
+    font-size: 44px;
+  }
 }
